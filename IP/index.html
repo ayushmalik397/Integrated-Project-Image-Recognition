@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>MyAI</title>
+  <title>MyAI|Image Recognition</title>
+  <link rel="stylesheet" href="css/style.css">
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="logot.png" type="image/x-icon">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="predict.js"></script>
-  <script type="text/javascript" src="keys.js"></script>
+  <script type="text/javascript" src="js/predict.js"></script>
+  <script type="text/javascript" src="js/keys.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Nunito|Patua+One|Source+Code+Pro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
   <script>
   var app = new Clarifai.App(
@@ -23,9 +25,7 @@
   }
   window.onload = function() {
     var select = document.getElementById("custom_models_dropdown");
-
     var public_mods = ['general-v1.3', 'nsfw-v1.0', 'face-v1.3', 'color', 'food-items-v1.0', 'travel-v1.0', 'celeb-v1.3', 'weddings-v1.0', 'apparel', 'age_gender_ethnicity'];
-
     app.models.list().then(
       function(response) {
         var ids = response.rawData;
@@ -36,9 +36,7 @@
             el.textContent = opt.name;
             el.value = opt.id;
             select.appendChild(el);
-          }
-        }
-      },
+          }}},
       function(err) {
         alert(err);
       }
@@ -51,12 +49,11 @@
     <nav class="navbar navbar-default navbar-fixed-top" style="bgcolor:white">
   <div class="container-fluid" style="height:90px">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="logo.png" height="70" width="190" alt="logo"></a>
+      <a class="navbar-brand" href="#"><img src="logod.png" height="70" width="190" alt="logo"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-top:25px">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li class="active"><a href="#">HOME</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -72,158 +69,54 @@
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search" size="80">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="about"><a href="#"><button onclick="document.getElementById('id02')" style="width:auto;">SignUp</button></a></li>
-    <li class="about"><a href="#"><button onclick="document.getElementById('id01')" style="width:auto;">Login</button></a></li>
-        </li>
-      </ul>
     </div>
   </div>
 </nav
-<div>
-  <br><br><br><br><br>
-  <div style="padding:0px; margin:0px; background-color:#fff;font-family:'Open Sans',sans-serif,arial,helvetica,verdana">
-    <script src="js/jssor.slider-22.2.8.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        jssor_1_slider_init = function() {
-          var jssor_1_options = {
-              $AutoPlay: true,
-              $SlideDuration: 800,
-              $SlideEasing: $Jease$.$OutQuint,
-              $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$
-              },
-              $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$
-              }
-            };
-
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-            /*responsive code begin*/
-            /*you can remove responsive code if you don't want the slider scales while window resizing*/
-            function ScaleSlider() {
-                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-                if (refSize) {
-                    refSize = Math.min(refSize, 1920);
-                    jssor_1_slider.$ScaleWidth(refSize);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-            ScaleSlider();
-            $Jssor$.$AddEvent(window, "load", ScaleSlider);
-            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-            /*responsive code end*/
-        };
-    </script>
-    <style>
-        .jssorb05 {
-            position: absolute;
-        }
-        .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background: url('img/b05.png') no-repeat;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .jssorb05 div { background-position: -7px -7px; }
-        .jssorb05 div:hover, .jssorb05 .av:hover { background-position: -37px -7px; }
-        .jssorb05 .av { background-position: -67px -7px; }
-        .jssorb05 .dn, .jssorb05 .dn:hover { background-position: -97px -7px; }
-
-        .jssora22l, .jssora22r {
-            display: block;
-            position: absolute;
-            /* size of arrow element */
-            width: 40px;
-            height: 58px;
-            cursor: pointer;
-            background: url('img/a22.png') center center no-repeat;
-            overflow: hidden;
-        }
-        .jssora22l { background-position: -10px -31px; }
-        .jssora22r { background-position: -70px -31px; }
-        .jssora22l:hover { background-position: -130px -31px; }
-        .jssora22r:hover { background-position: -190px -31px; }
-        .jssora22l.jssora22ldn { background-position: -250px -31px; }
-        .jssora22r.jssora22rdn { background-position: -310px -31px; }
-        .jssora22l.jssora22lds { background-position: -10px -31px; opacity: .3; pointer-events: none; }
-        .jssora22r.jssora22rds { background-position: -70px -31px; opacity: .3; pointer-events: none; }
-    </style>
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1300px;height:500px;overflow:hidden;visibility:hidden;">
-        <!-- Loading Screen -->
-        <div data-u="loading" style="position:absolute;top:0px;left:0px;background-color:rgba(0,0,0,0.7);">
-            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-            <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
-        </div>
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1300px;height:500px;overflow:hidden;">
-            <div>
-                <img data-u="image" src="img/slide.jpg" />
-              </div>
-            <div>
-                <img data-u="image" src="img/slide1.bmp" />
-            </div>
-            <a data-u="any" href="http://www.jssor.com" style="display:none">Full Width Slider</a>
-            <div>
-                <img data-u="image" src="img/blue.jpg" />
-            </div>
-        </div>
-        <!-- Bullet Navigator -->
-        <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
-            <!-- bullet navigator item prototype -->
-            <div data-u="prototype" style="width:16px;height:16px;"></div>
-        </div>
-        <span data-u="arrowleft" class="jssora22l" style="top:0px;left:8px;width:40px;height:58px;" data-autocenter="2"></span>
-        <span data-u="arrowright" class="jssora22r" style="top:0px;right:8px;width:40px;height:58px;" data-autocenter="2"></span>
-    </div>
-    <script type="text/javascript">jssor_1_slider_init();</script>
-</div>
+<div><div class="firstbox">
+  <br><br><br><br>
 <br><br>
 <div class="container-fluid">
-  <div id="Model_Title" style="font-size:16px; margin-bottom:5px">Model</div>
+<div class="colum"><br>
+  <div class="side">
+  <div id="Model_Title" style="font-size:16px; margin-bottom:5px; margin-left:10px;">Model</div>
   <input type="hidden" id="hidden-val" name="hidden-val"/>
   <input type="hidden" id="hidden-type" name="hidden-type"/>
   <form action="" style="font-size:14px; margin-bottom:20px; float:left; margin-right:30px;">
-    <input type="radio" name="model" value="general" checked="checked"> General<br>
-    <input type="radio" name="model" value="food"> Food<br>
-    <input type="radio" name="model" value="NSFW"> NSFW<br>
-    <input type="radio" name="model" value="travel"> Travel<br>
-    <input type="radio" name="model" value="wedding"> Wedding<br>
-    <input type="radio" name="model" value="color"> Color<br>
-    <input type="radio" name="model" value="apparel"> Apparel<br>
-    <input type="radio" name="model" value="faces"> Faces<br>
-    <input type="radio" name="model" value="demographic"> Demographic<br>
-    <input type="radio" name="model" value="celebrity"> Celebrity<br>
+    <input style="margin-left:10px" type="radio" name="model" value="general" checked="checked"> General<br>
+    <input style="margin-left:10px" type="radio" name="model" value="food"> Food<br>
+    <input style="margin-left:10px" type="radio" name="model" value="NSFW"> NSFW<br>
+    <input style="margin-left:10px" type="radio" name="model" value="travel"> Travel<br>
+    <input style="margin-left:10px" type="radio" name="model" value="wedding"> Wedding<br>
+    <input style="margin-left:10px" type="radio" name="model" value="color"> Color<br>
+    <input style="margin-left:10px" type="radio" name="model" value="apparel"> Apparel<br>
+    <input style="margin-left:10px" type="radio" name="model" value="faces"> Faces<br>
+    <input style="margin-left:10px" type="radio" name="model" value="demographic"> Demographic<br>
+    <input style="margin-left:10px" type="radio" name="model" value="celebrity"> Celebrity<br>
     <br>
   </form>
-  <div style="float:left">
-    <button onclick="
+  </div>
+  <h1 style="font-family: 'Arvo', serif">&nbsp;&nbsp;<i class="large material-icons">photo</i>&nbsp;&nbsp;Try Image!!!</h1>
+  <hr>
+  <div style="margin-left:20px">
+    <h3>URL Upload</h3>
+    <input type="text" id="imgurl" placeholder="Image URL" size="80"/>
+    <button class="butt butt2" onclick="
       if(imgurl.value == '') {
         alert('Please enter an image URL!');
         return;
-      }
-
-      else if (!validFile(imgurl.value)) {
+      }else if (!validFile(imgurl.value)) {
         alert('Supported File Types: JPEG, PNG, TIFF, BMP');
         return;
       }
-
-      predict_click($('#imgurl').val(), 'url');" style="width:112px">Predict a URL!</button>
-
-    <input type="text" id="imgurl" placeholder="Image URL" size="80"/>
-
-    <br/><br/>
-
-    <button onclick="
+predict_click($('#imgurl').val(), 'url');" style="width:112px"><b>Predict!!!</b></button>
+<br/><hr size="50%" style="margin-right:400px">
+    <h3>Local Upload</h3>
+    <input type="file" id="filename" placeholder="Filename" size="800"/>
+    <button class="butt butt2" style="margin-left:119px" onclick="
       if(filename.value == '') {
         alert('Please browse for a file!');
         return;
@@ -233,17 +126,31 @@
         alert('Supported File Types: JPEG, PNG, TIFF, BMP');
         return;
       }
-      predict_click($('#filename').val(), 'file');">Predict a local file!</button>
-
-    <input type="file" id="filename" placeholder="Filename" size="80"/>
+      predict_click($('#filename').val(), 'file');"><b>Predict a local file!</b></button>
   </div>
+  <br><br>
+</div></div></div>
+<div class="middle">
   <div style="margin-top:30px; margin-left:20px; margin-bottom:30px; clear:left; float:left">
     <img id="img_preview" src="" width="400"/>
     <br/>
     <span id="add-image-button" style="visibility:hidden"><button onClick="addImageToApp()">Add image to application</button></span>
   </div>
-  <br><br><br><br><br><br><br><br><br><br><br><br>
-  <div id="concepts" class="conceptBox"></div>
+  <br>
+  <div id="concepts" class="conceptBox" style="color:black"></div></div>
+  <div class="secondbox container-fluid"><br><br>
+<i style="margin-right:10px" class="material-icons">mode_comment</i><br><br>
+<p style="margin-left: 100px; margin-right: 100px">Image recognition using traditional computer vision techniques. I refer to techniques that are not Deep Learning based as traditional computer vision techniques because they are being quickly replaced by Deep Learning based techniques. That said, traditional computer vision approaches still power many applications. Many of these algorithms are also available in computer vision libraries like OpenCV and work very well out of the box.</p>
 </div>
+  </div>
+  <div class="thirdbox">
+    <br><h1>See the world with our eyes!!!</h1><img src="https://www.clarifai.com/static/images/animation-searching-once.gif" height="200px" width="300px"><br>
+    <p style="margin-right:200px; margin-left:200px; font-size:20px">MyAI lets you find content by visual similarity, keyword tag, or a combination of both so you can serve powerful image-based recommendations and related content in real-time.</p>
+  </div><br><br><br>
+  <div class="fourthbox"><br>
+<div class="text">Connect with us:<br><img style="border-radius:10px; height:30px; width:30px" src="http://res.cloudinary.com/dtkrqoejy/image/upload/v1488740030/linkedin_bo1wyb.jpg">&nbsp;<img style="border-radius:10px; height:30px; width:30px" src="http://res.cloudinary.com/dtkrqoejy/image/upload/v1488789928/github-circle_twzf0s.jpg">&nbsp;<img style="border-radius:10px; height:30px; width:30px" src="http://res.cloudinary.com/dtkrqoejy/image/upload/v1488789928/google-plus_klm6ca.jpg"></div><br><br><br><br>
+<div class="copyright"><img src="logod.png">&nbsp;&nbsp;&nbsp;Terms of use&nbsp;|&nbsp;Privacy Policy &nbsp;|&nbsp;Content Takedown</div>
+  </div>
+  <div><br></div>
 </body>
 </html>
