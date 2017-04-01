@@ -1,3 +1,4 @@
+<h1>Image Recognition Website</h1>
 <pre>
 <p>The following repository contains the Web app of an Image Recognition platform which hepls to find the 
 elements of the image.</p>
